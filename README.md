@@ -1,82 +1,71 @@
-[![trophy](https://github-profile-trophy.vercel.app/?username=USMCsky&theme=onedark&margin-w=10&margin-h=10)](https://github.com/ryo-ma/github-profile-trophy)
+# 🏆 SortYourStuff
 
-# SortYourStuff
+<p align="center">
+  <img src="https://img.shields.io/badge/Minecraft-1.21.11-5E7C16?style=for-the-badge&logo=minecraft&logoColor=white" alt="Minecraft 1.21.11" />
+  <img src="https://img.shields.io/badge/Spigot-API-F27B29?style=for-the-badge" alt="Spigot API" />
+  <img src="https://img.shields.io/badge/Java-21-E76F00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 21" />
+  <img src="https://img.shields.io/badge/Author-USMCsky-6A4C93?style=for-the-badge&logo=github&logoColor=white" alt="Author USMCsky" />
+</p>
 
-A lightweight Java/Spigot plugin that sorts player inventories and containers with **Shift + F**.
+A lightweight Spigot plugin that sorts player inventories and containers with **Shift + F**, helping keep storage organized with a fast in-game shortcut.
 
 ## Features
+- **Player inventory sorting** using the normal visual storage order.
+- **Container sorting** for chests and other open inventories.
+- **Stack merging** before sorting to reduce partial stacks.
+- **Consistent ordering** by material, metadata, and stack size.
+- **Optional shift requirement** to prevent accidental sorting.
+- **Permission-controlled usage** with `sort.use`.
 
-- Sorts player inventory storage in visual order.
-- Sorts container inventories in place.
-- Merges similar item stacks before reordering.
-- Orders items consistently by material, metadata, and stack size.
-- Optional shift requirement to prevent accidental sorting.
-- Permission-gated with `sort.use`.
+## Built For
+- **Platform:** Spigot-compatible servers
+- **Minecraft version:** 1.21.11
+- **Language level:** Java 21
 
-## How it works
+## How It Works
+Once installed, the plugin listens for the offhand swap key while a player is interacting with an inventory:
 
-When a player presses **F** (offhand swap) while interacting with an inventory:
+- **Shift + F sorting:** players can sort quickly using the offhand swap keybind.
+- **Player inventory support:** storage slots are sorted in the standard visual order players expect.
+- **Container support:** open containers are sorted from the first slot to the last slot.
+- **Smart stack handling:** similar items are merged together before the final order is applied.
 
-- If `require-shift` is enabled, the player must also be sneaking or shift-clicking.
-- Player inventories are sorted using the normal visual storage layout.
-- Chests and other containers are sorted from slot `0` to the last slot.
-- The plugin merges similar stacks where possible, then rewrites the inventory in sorted order.
+This creates a fast, simple inventory management workflow without adding commands or complex menus.
 
 ## Configuration
-
-Default `config.yml`:
+Default configuration:
 
 ```yaml
 require-shift: true
 ```
 
-- `true`: sorting only works when shift is held or the player is sneaking.
-- `false`: pressing **F** while in an inventory can trigger sorting without shift.
+- `true` enables sorting only when the player is sneaking or otherwise holding shift.
+- `false` allows sorting with the key press alone while viewing an inventory.
 
 ## Permission
-
-```text
-sort.use
-```
-
-Players with this permission can use the sorting feature. It defaults to `true`.
-
-## Plugin details
-
-- **Name:** `sort`
-- **Main class:** `particles.usmcsky.Sort`
-- **API version:** `1.21`
-- **Java version:** `21`
-- **Spigot dependency:** `org.spigotmc:spigot-api:1.21.11-R0.1-SNAPSHOT`
-
-## Build
-
-Use the Gradle wrapper included in the repository:
-
-```bash
-./gradlew build
-```
-
-On Windows:
-
-```bash
-gradlew.bat build
-```
+- `sort.use` — allows players to use the sorting feature.
 
 ## Installation
-
-1. Build the plugin jar.
-2. Place the generated jar in your server's `plugins/` folder.
-3. Start or restart the server.
-4. Adjust `config.yml` if needed.
+1. Download or build the plugin JAR.
+2. Place the JAR in your server's `plugins/` folder.
+3. Start or restart your Spigot-compatible server.
+4. Adjust `config.yml` if you want to change the shift requirement.
 
 ## Usage
+This plugin does **not currently provide commands**.
 
-1. Open your inventory or a container.
-2. Hold **Shift** if `require-shift` is enabled.
-3. Press **F**.
-4. Your inventory or the open container will be sorted.
+After installation, usage is simple:
+- Open your inventory or a container.
+- Hold **Shift** if `require-shift` is enabled.
+- Press **F**.
+- The inventory or container will be sorted automatically.
 
-## Notes
+## Compatibility
+- Spigot API `1.21.11-R0.1-SNAPSHOT`
+- Minecraft 1.21.x servers matching the declared API version
 
-This repository currently contains a built jar file in the root, but the recommended workflow is to build fresh artifacts from source for releases and testing.
+## Developer Notes
+The plugin entry point is `particles.usmcsky.Sort`. On enable, it saves the default config and registers `SortListener`, which handles inventory sorting, stack merging, and slot reordering logic.
+
+## License
+No license file is currently included in this repository.
