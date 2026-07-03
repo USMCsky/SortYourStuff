@@ -29,7 +29,7 @@ public final class SortListener implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getClick() != ClickType.SWAP_OFFHAND) {
             return;
@@ -40,11 +40,8 @@ public final class SortListener implements Listener {
         if (!player.hasPermission("sort.use")) {
             return;
         }
-        if (plugin.getConfig().getBoolean("require-shift", true)) {
-            boolean shiftHeld = event.isShiftClick() || player.isSneaking();
-            if (!shiftHeld) {
-                return;
-            }
+        if (plugin.getConfig().getBoolean("require-shift", false) && !player.isSneaking()) {
+            return;
         }
         if (event.getClickedInventory() == null) {
             return;
@@ -90,7 +87,7 @@ public final class SortListener implements Listener {
         }
 
         merged.sort(
-            Comparator.comparing((ItemStack item) -> item.getType().getKeyOrThrow().toString())
+            Comparator.comparing((ItemStack item) -> item.getType().name())
                 .thenComparing(SortListener::metaKey)
                 .thenComparing(Comparator.comparingInt(ItemStack::getAmount).reversed())
         );
