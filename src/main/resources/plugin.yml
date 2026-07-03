@@ -1,0 +1,15 @@
+name: sort
+version: '${version}'
+description: Inventory sorting with Shift+F
+prefix: sort
+
+main: particles.usmcsky.Sort
+api-version: '1.21'
+
+authors: [ USMCsky ]
+website: https://www.github/usmcsky
+
+permissions:
+  sort.use:
+    description: Allows using inventory sort with Shift+F.
+    default: true
