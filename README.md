@@ -30,30 +30,7 @@ Once installed, the plugin listens for the offhand swap key while a player is in
 - **Container support:** open containers are sorted from the first slot to the last slot.
 - **Smart stack handling:** similar items are merged together before the final order is applied.
 
-This creates a fast, simple inventory management workflow without adding commands or complex menus.
-
-## Configuration
-Default configuration:
-
-```yaml
-require-shift: true
-```
-
-- `true` enables sorting only when the player is sneaking or otherwise holding shift.
-- `false` allows sorting with the key press alone while viewing an inventory.
-
-## Permission
-- `sort.use` — allows players to use the sorting feature.
-
-## Installation
-1. Download or build the plugin JAR.
-2. Place the JAR in your server's `plugins/` folder.
-3. Start or restart your Spigot-compatible server.
-4. Adjust `config.yml` if you want to change the shift requirement.
-
 ## Usage
-This plugin does **not currently provide commands**.
-
 After installation, usage is simple:
 - Open your inventory or a container.
 - Hold **Shift** if `require-shift` is enabled.
@@ -63,9 +40,3 @@ After installation, usage is simple:
 ## Compatibility
 - Spigot API `1.21.11-R0.1-SNAPSHOT`
 - Minecraft 1.21.x servers matching the declared API version
-
-## Developer Notes
-The plugin entry point is `particles.usmcsky.Sort`. On enable, it saves the default config and registers `SortListener`, which handles inventory sorting, stack merging, and slot reordering logic.
-
-## License
-No license file is currently included in this repository.
