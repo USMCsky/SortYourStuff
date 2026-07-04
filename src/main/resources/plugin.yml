@@ -1,3 +1,5 @@
+depend: [ProtocolLib]
+
 name: sort
 version: '${version}'
 description: Inventory sorting with F
