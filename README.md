@@ -10,7 +10,7 @@
 A lightweight Spigot plugin that sorts player inventories and containers with **Shift + F**, helping keep storage organized with a fast in-game shortcut.
 
 ## Features
-- **Player inventory sorting** using the normal visual storage order.
+- **Player inventory sorting** using the normal visual storage order while leaving the hotbar untouched.
 - **Container sorting** for chests and other open inventories.
 - **Stack merging** before sorting to reduce partial stacks.
 - **Consistent ordering** by material, metadata, and stack size.
@@ -26,7 +26,7 @@ A lightweight Spigot plugin that sorts player inventories and containers with **
 Once installed, the plugin listens for the offhand swap key while a player is interacting with an inventory:
 
 - **Shift + F sorting:** players can sort quickly using the offhand swap keybind.
-- **Player inventory support:** storage slots are sorted in the standard visual order players expect.
+- **Player inventory support:** only the main storage slots are sorted in the standard visual order players expect, and the hotbar is left alone.
 - **Container support:** open containers are sorted from the first slot to the last slot.
 - **Smart stack handling:** similar items are merged together before the final order is applied.
 
