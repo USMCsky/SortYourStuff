@@ -7,6 +7,7 @@ public final class Sort extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        ShiftDragSupportReporter.logStatus(this);
         getServer().getPluginManager().registerEvents(new SortListener(this), this);
     }
 }
