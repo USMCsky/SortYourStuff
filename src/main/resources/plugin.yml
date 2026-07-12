@@ -15,3 +15,4 @@ permissions:
   sort.use:
     description: Allows using inventory sort with F.
     default: true
+
